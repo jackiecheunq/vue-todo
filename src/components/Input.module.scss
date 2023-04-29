@@ -1,0 +1,36 @@
+.todoList {
+  button {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 100%;
+    border-width: 0;
+    border-color: black;
+    cursor: pointer;
+    border: solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.listItem {
+  display: flex;
+  width: 20rem;
+  padding: 10px;
+  border: solid;
+  border-width: 1px;
+  border-color: black;
+  .deleteButton {
+    margin-left: auto;
+  }
+  .finishButton {
+    margin-right: 0.5rem;
+  }
+  .taskContent {
+    width: 15rem;
+  }
+}
+
+.crossedText {
+  text-decoration: line-through;
+}
