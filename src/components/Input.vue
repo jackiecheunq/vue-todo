@@ -1,5 +1,5 @@
 <script setup>
-import { inject, ref, watchEffect } from 'vue'
+import { computed, inject, ref, watchEffect } from 'vue'
 import classes from './Input.module.scss'
 const tasks = inject('tasks')
 const page = inject('page')
@@ -9,8 +9,10 @@ const checked = ref(false)
 const filteredTasks = () =>
   tasks.value.filter((task) => task.status === page.value || page.value === 'all')
 
+const computedFilteredTasks = computed(filteredTasks)
+
 watchEffect(() => {
-  if (filteredTasks().every((task) => task.status === "completed")) {
+  if (computedFilteredTasks.value.every((task) => task.status === "completed")) {
     checked.value = true
   } else {
     checked.value = false
@@ -46,7 +48,7 @@ export default {
 </script>
 <template>
   <section>
-    <div v-if="filteredTasks().length > 0">
+    <div v-if="computedFilteredTasks.length > 0">
       <input id="toggle-all" v-model="checked" class="toggle-all" type="checkbox" @change="switchAllTaskStatus" />
       <label for="toggle-all">Mark all as <span>complete</span></label>
     </div>
