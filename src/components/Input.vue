@@ -50,7 +50,7 @@ export default {
   <section>
     <div v-if="computedFilteredTasks.length > 0">
       <input id="toggle-all" v-model="checked" class="toggle-all" type="checkbox" @change="switchAllTaskStatus" />
-      <label for="toggle-all">Mark all as <span>complete</span></label>
+      <label for="toggle-all">Mark all as complete</label>
     </div>
 
     <ul :class="classes.todoList">
