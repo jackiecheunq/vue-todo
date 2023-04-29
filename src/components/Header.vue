@@ -9,6 +9,7 @@ const inputHandler = () => {
   }
 }
 </script>
+
 <script>
 export default {
   name: 'TodoHeader'
