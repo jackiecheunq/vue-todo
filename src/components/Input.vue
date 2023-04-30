@@ -54,7 +54,7 @@ export default {
     </div>
 
     <ul :class="classes.todoList">
-      <li v-for="(task, index) in filteredTasks()" :key="index" :class="classes.listItem">
+      <li v-for="(task) in filteredTasks()" :key="task.id" :class="classes.listItem">
         <div v-if="page !== 'completed'">
           <button :class="classes.finishButton" @click="taskStatusSwitcher(task)">✓</button>
         </div>
