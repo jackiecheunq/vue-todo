@@ -35,9 +35,9 @@ const taskStatusSwitcher = (task) => {
 }
 const switchAllTaskStatus = (event) => {
   if (event.target.checked) {
-    filteredTasks().forEach(strategies.active)
+    computedFilteredTasks.value.forEach(strategies.active)
   } else {
-    filteredTasks().forEach(strategies.completed)
+    computedFilteredTasks.value.forEach(strategies.completed)
   }
 }
 </script>
@@ -54,7 +54,7 @@ export default {
     </div>
 
     <ul :class="classes.todoList">
-      <li v-for="(task) in filteredTasks()" :key="task.id" :class="classes.listItem">
+      <li v-for="(task) in computedFilteredTasks" :key="task.id" :class="classes.listItem">
         <div v-if="page !== 'completed'">
           <button :class="classes.finishButton" @click="taskStatusSwitcher(task)">✓</button>
         </div>
@@ -63,9 +63,9 @@ export default {
         </p>
         <div>
           <button :class="classes.deleteButton" @click="tasks.splice(
-              tasks.findIndex((curTask) => curTask.id === task.id),
-              1
-            )
+            tasks.findIndex((curTask) => curTask.id === task.id),
+            1
+          )
             ">
             X
           </button>
